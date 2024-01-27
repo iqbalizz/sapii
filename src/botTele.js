@@ -1,8 +1,8 @@
 import fetch from "node-fetch";
 
 export async function sendMessageToTelegram(name, totalSold, totalPenjualan) {
-    const botToken = '6720338460:AAEj1aeg3reojtTfLx3oN7GQ2bdVJVuVICo';
-    const chatId = '-1002091344045';
+    const botToken = '';
+    const chatId = '-';
     const apiUrl = `https://api.telegram.org/bot${botToken}/sendMessage`;
 
     const formattedMessage = `<pre>

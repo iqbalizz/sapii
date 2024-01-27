@@ -316,6 +316,7 @@ function hasAlreadyReplied(repliedTimestamps, timestamp) {
                 if (!isNoMessageLogged) {
                     console.log(`[!] Belum ada message Masuk`);
                     isNoMessageLogged = true;
+                    break;
                 }
             }
 
@@ -325,96 +326,3 @@ function hasAlreadyReplied(repliedTimestamps, timestamp) {
         console.log(`[!] Gagal Get SessionId dll`);
     }
 })();
-
-// (async () => {
-//     const textBanned = `banWord.txt`;
-//     const cookie = fs.readFileSync(`cookies.txt`, `utf-8`);
-//     const resultReadTextBan = readBannedWordsFromFile(textBanned)
-//     // console.log(resultReadTextBan)
-//     // console.log(cookie)
-
-//     const resultSession = await getSession(cookie)
-//     // console.log(resultSession)
-//     if (resultSession.err_msg === `Berhasil`) {
-//         console.log(`[!] Success Get Session ID, Room_Id, dll`)
-//         const sessionId = resultSession.data.session.session_id;
-//         const chatroomId = resultSession.data.session.chatroom_id;
-//         const deviceId = resultSession.data.session.device_id;
-//         const myUid = resultSession.data.session.uid
-
-//         console.log('Session ID:', sessionId);
-//         console.log('Chatroom ID:', chatroomId);
-//         console.log('Device ID:', deviceId);
-//         console.log('My UID:', myUid);
-
-//         // const content = `rekaman`
-
-//         // const test = containsBannedWords(content, resultReadTextBan)
-//         // console.log(test)
-
-
-//         let resultCheckMessage
-//         while (true) {
-//             resultCheckMessage = await getCheckMessages(chatroomId, deviceId, cookie)
-//             // console.log(resultCheckMessage)
-
-//             if (resultCheckMessage.data.message.length > 0) {
-//                 resultCheckMessage.data.message.forEach((pesan, index) => {
-//                     // console.log(pesan)
-//                     if (pesan.msgs.length > 0) {
-//                         console.log()
-//                         console.log(`[!] Get Message`)
-//                         pesan.msgs.forEach((check) => {
-//                             const uidUser = check.uid;
-//                             const nameUser = check.nickname;
-//                             const displayNameUser = check.display_name;
-//                             const getContent = check.content;
-//                             const contentParse = JSON.parse(getContent)
-//                             const messageUser = contentParse.content;
-//                             const type = contentParse.type;
-//                             const statusPengkondisian = contentParse.is_aggr;
-
-//                             // console.log(check)
-//                             // console.log(contentParse)
-//                             console.log(`[!] UID User : ${uidUser}`)
-//                             console.log(`[!] Nama User : ${nameUser}`)
-//                             console.log(`[!] Display Nama User : ${displayNameUser}`)
-//                             // console.log(type)
-
-
-//                             if (statusPengkondisian === false) {
-//                                 console.log(`[!] Request Dari User`);
-//                                 console.log(`[!] Request User : ${messageUser}`);
-//                                 console.log();
-//                             } else {
-//                                 console.log(`[!] Pesan User Disini`)
-//                                 console.log(`[!] Pesan User : ${messageUser}`)
-
-//                                 const test = containsBannedWords(messageUser, resultReadTextBan)
-//                                 console.log(test)
-//                                 if (containsBannedWords(messageUser, resultReadTextBan)) {
-//                                     console.log(`[!] Message dengan kata2 Banned FOUND`)
-//                                     // console.log(banUser(sessionId, uidUser, cookie))
-//                                     const resultBannedUser = await banUser(sessionId, uidUser, cookie)
-//                                     console.log(resultBannedUser)
-//                                 }
-//                                 console.log();
-//                             }
-//                         })
-//                     } else {
-//                         console.log(`[!] Gagal get messages!`)
-//                         console.log()
-//                     }
-//                 });
-//             } else {
-//                 console.log(`[!] Belum ada message Masuk`)
-//             }
-//             await delay(3 * 1000)
-//         }
-
-//         // console.log(resultCheckMessage)
-
-//     } else {
-//         console.log(`[!] Gagal Get SessionId dll`)
-//     }
-// })();
